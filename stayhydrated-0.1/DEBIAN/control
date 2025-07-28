@@ -1,0 +1,8 @@
+Package: stayhydrated
+Version: 0.1
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: Marco <>
+Description: A timer to stay hydrated.
+
