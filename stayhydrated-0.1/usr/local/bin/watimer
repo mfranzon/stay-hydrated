@@ -13,7 +13,7 @@ IS_WORK_SESSION=true
 RUNNING=true
 WORK_SESSION_TYPE="Splash Session"
 WORK_TIME=$SPLASH_SESSION
-SOUND_FILE="/usr/share/water-timer/wave_crash.wav"
+SOUND_FILE="/usr/share/sounds/stayhydrated/wd1.wav"
 
 # ASCII art for water vibe
 WATER_ART="
