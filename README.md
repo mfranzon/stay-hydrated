@@ -1,4 +1,4 @@
-# Water wave time
+# Stay hydrated timer
 
 A timer for the terminal, designed to keep you hydrated and productive with a refreshing water-themed vibe. Catch waves with sessions like *Splash Session* (25 min), *Tidal Wave* (50 min), or *Aqua Marathon* (90 min), and chill with Hydration Breaks.
 
