@@ -10,7 +10,7 @@ Choose from:
 Customizable `--break` duration (default: 5 min).
 
 ## Sound Notification
-Plays a wave crash sound (wave_crash.wav) at session end, with a fallback beep if aplay or the sound file is missing.
+Plays a wave crash sound at session end, with a fallback beep if aplay or the sound file is missing.
 
 ## Waves Caught
 Tracks completed work sessions.
