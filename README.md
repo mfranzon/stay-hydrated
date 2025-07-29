@@ -7,7 +7,7 @@ Choose from:
 - `--tidal-wave`: 50-minute work session.
 - `--aqua-marathon`: 90-minute work session.
 
-Customizable `--break` duration (default: 5 min).
+Customizable `--break` duration (default: 5 min), `-c` duration.
 
 ## Sound Notification
 Plays a wave crash sound at session end, with a fallback beep if aplay or the sound file is missing.
