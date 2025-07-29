@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Water Wave Timer 🌊
-# A Gen Z-inspired Pomodoro timer with multiple session types and .wav sound
 
 # Default durations (in seconds)
 SPLASH_SESSION=$((25 * 60))  # 25 minutes
@@ -17,7 +15,7 @@ SOUND_FILE="/usr/share/sounds/stayhydrated/wd1.wav"
 
 # ASCII art for water vibe
 WATER_ART="
-🌊  Water Wave Timer  🌊
+🌊  Stay Hydrated Timer  🌊
    Let's catch this wave!
    ~ Stay hydrated, slay ~
 "
@@ -61,7 +59,7 @@ play_sound() {
 session_end() {
   local session_type=$1
   play_sound
-  if [ "$session_type" = "Splash Session" ] || [ "$session_type" = "Tidal Wave" ] || [ "$session_type" = "Aqua Marathon" ]; then
+  if [ "$session_type" = "Splash Session" ] || [ "$session_type" = "Tidal Wave" ] || [ "$session_type" = "Aqua Marathon" ] || [ "$session_type" = "Custom Wave" ]; then
     ((WAVES_CAUGHT++))
     echo "You SLAYED that $session_type, bestie! 🌊 Time for a Hydration Break. 😎"
     echo "Waves Caught: $WAVES_CAUGHT"
@@ -84,7 +82,7 @@ trap 'handle_sigint' SIGINT
 
 # Check if script is sourced
 if [[ "${BASH_SOURCE[0]}" != "${0}" ]]; then
-  echo "Error: This script should not be sourced. Run it with './water_timer.sh' or 'bash water_timer.sh'."
+  echo "Error: This script should not be sourced. Run it with './water.sh' or 'bash water.sh'."
   return 1
 fi
 
@@ -106,13 +104,28 @@ while [ $# -gt 0 ]; do
       WORK_TIME=$AQUA_MARATHON
       shift
       ;;
+    -c)
+      if [[ "$2" =~ ^[0-9]+$ ]] && [ "$2" -gt 0 ]; then
+        WORK_SESSION_TYPE="Custom Wave"
+        WORK_TIME=$(( $2 * 60 ))
+      else
+        echo "Error: -c requires a positive number of minutes"
+        exit 1
+      fi
+      shift 2
+      ;;
     -b)
-      BREAK_TIME=$(( $2 * 60 ))
+      if [[ "$2" =~ ^[0-9]+$ ]] && [ "$2" -gt 0 ]; then
+        BREAK_TIME=$(( $2 * 60 ))
+      else
+        echo "Error: -b requires a positive number of minutes"
+        exit 1
+      fi
       shift 2
       ;;
     *)
-      echo "Usage: $0 [--splash-session | --tidal-wave | --aqua-marathon] [-b break_minutes]"
-      echo "Example: $0 --tidal-wave -b 10"
+      echo "Usage: $0 [--splash-session | --tidal-wave | --aqua-marathon | -c work_minutes] [-b break_minutes]"
+      echo "Example: $0 -c 30 -b 10"
       exit 1
       ;;
   esac
@@ -121,7 +134,7 @@ done
 # Main loop
 clear
 echo "$WATER_ART"
-echo "Starting Water Wave Timer! Work ($WORK_SESSION_TYPE): $(format_time $WORK_TIME), Break: $(format_time $BREAK_TIME)"
+echo "Starting Stay Hydrated Timer! Work ($WORK_SESSION_TYPE): $(format_time $WORK_TIME), Break: $(format_time $BREAK_TIME)"
 echo "Press Ctrl+C to quit anytime."
 
 while [ "$RUNNING" = true ]; do
